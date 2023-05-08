@@ -17,7 +17,7 @@ mongoose.connect(DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true
     console.log(err);
   });
 
-
+export default app;
 
 // // Connect to DATABASE
 // const DATABASE_URL = "mongodb://127.0.0.1:27017";
