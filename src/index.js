@@ -7,30 +7,20 @@ const port = process.env.port || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const DATABASE_URL = "mongodb://127.0.0.1:27017";
-mongoose.connect(DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true, })
-  .then((result) => {
-    console.log("connected to database");
-    app.listen(port, () => console.log(`App listening on port ${port}!`));
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
-export default app;
 
-// // Connect to DATABASE
-// const DATABASE_URL = "mongodb://127.0.0.1:27017";
-// mongoose.connect(DATABASE_URL, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-// const db = mongoose.connection;
-// db.on("error", (err) => console.log(err));
-// db.once("open", () => console.log("connected to database"));
+// Connect to DATABASE
+const DATABASE_URL = "mongodb+srv://user:user@cluster1.z3alosv.mongodb.net/?retryWrites=true&w=majority";
+mongoose.connect(DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+db.on("error", (err) => console.log(err));
+db.once("open", () => console.log("connected to database"));
 
-// // Start Server
+// Start Server
 
-// app.listen(port, () => console.log(`App listening on port ${port}!`));
+app.listen(port, () => console.log(`App listening on port ${port}!`));
 
 
